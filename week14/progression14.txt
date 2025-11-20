@@ -1,0 +1,41 @@
+ได้เรียนรู้วิธีการส่ง fetch api 
+ใน API มันจะประกอบไปด้วย 
+Endpoint = /api/v1/study-plans
+Method = POST,PUT,GET
+Header = "Content-Type": "application/json"
+Body = {data}
+
+ปกติแล้วเราจะรู้แค่ concept พื้นฐาน แต่ไม่รู้ว่าถ้าหากมันอยู่ บน frontend แล้วรูปแบบ
+มันใช้งานอย่างไร JSON.stringify คือการJSON ให้อยู่ในรูปแบบ obj
+
+ส่วน Time.js โค้ดส่วนนี้ผมให้chatgpt gen แล้วตอบอาจารย์ไม่ได้ครับ
+
+เริ่มจากเรารับ res จาก Backend 
+ภายใน Body จะมี
+"createdAt": "2025-11-10T14:15:16.000Z",
+"updatedAt": "2025-11-10T17:18:19.000Z"
+ซึ่งเป็น Format แบบ ISO DATETIME DATABASE สังเกตจาก 
+ดังนั้น Type จะเป็น string แต่ รูปแบบการเขียนเป็น UTC
+
+const declaredAt = new Date(data.updatedAt);
+เมื่อเราได้ string จาก Backend เราก็เอา string ไปแปลงเป็น obj new Date()
+เราทำเพื่อ ที่จะใช้ LIBS ในการ แปลงเวลา ได้ง่ายขึ้น ไม่ต้องเขียน function รองรับ date เอง จาก string
+
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+ก่อนที่เราจะ เอา declaredAt ไปคำนวณ เราต้องตั้ง Timezone จากคำสั่งนี้ คือ Intl
+
+const datePart = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      timeZone,
+    }).format(declaredAt);
+
+
+    const timePart = new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone,
+    }).format(declaredAt);
