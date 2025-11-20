@@ -2,3 +2,33 @@
 auth.js 
 ส่วนนี้เป็นส่วนที่ยากที่สุด ต้องทำความเข้าใจกับ keycloak 
 ศึกษาการทำงาน ต้องเข้าใจว่า keycloak ส่งอะไรกับมาบ้างและ ต้องส่งข้อมูลไปยังไง
+
+Keycloak(keycloakConfig) มันคือการสร้าง instance เหมือนสร้าง connection
+แค่ครั้งเดียว แล้วให้ function อื่นๆ ใช้งานได้
+
+requiredAuth ทำหน้าที่ตรวจว่าหน้าที่เรียกใช้อยู่ ผู้ใช้ได้ยืนยันตัวตนหรือยัง 
+ผมเลยทำเป็น function ที่ใช้ซ้ำๆ เพื่อให้ใช้ได้หลายหน้า
+หลังจาก login แล้ว มันจะเด้งกลับไปที่หน้าเดิมที่เรียกใช้มัน
+
+const authenticated = await keycloak.init({
+        onLoad: 'login-required',
+        checkLoginIframe: false,
+    });
+
+    if (!authenticated) {
+        await keycloak.login();
+        return;
+    }
+ผมเข้าใจว่า keycloak init ให้มันตั้งเช็ค config
+ถ้ามัน res กลับว่า false ก็จะต้อง login ใหม่
+
+
+ส่วน main.js
+ผมได้จาก chatgpt ผมถามAI ว่า ไม่อยาก document.queryselection()
+บ่อยๆ ทำอย่างไร เพราะ ผมรู้สึกว่า โค้ดมันเยอะ 
+chatgpt จึงแนะนำว่าให้ใช้ $ มันก็คือการสร้าง function ใหม่เพื่อรองรับ document.queryselection()
+เวลาเรียกใช้ ก็ $('.ecors-dialog-error') แบบนี้
+
+ส่วน import.meta.env.VITE_APP_URL เป็นความรู้ใหม่
+ถ้าอยากให้ VITE อ่าน .env ตัวแปรนั้นๆได้ ต้องขึ้นต้นตัวแปรด้วย VITE_ เท่านั้น
+ไม่งั้นมันจะไม่ดึงมาตอน build ด้วย จะทำให้มันขึ้น undefiled
