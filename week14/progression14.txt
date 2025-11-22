@@ -39,3 +39,14 @@ const datePart = new Intl.DateTimeFormat('en-GB', {
       hour12: false,
       timeZone,
     }).format(declaredAt);
+
+เริ่มจาก Intl ผมพึ่งรู้ว่ามันเป็น Bulid-in ของ JS ทำหน้าที่แปลง Sensity ของภาษา, วัน-เวลา , สกุลเงิน
+จัดการหน่วยทางวิทยาศาสตร์
+
+DateTimeFormat ใช้แปลงเวลา ด้านใน มี2 argคือ
+1. 'en-GB' รับstring ทำให้แสดงเป็น รูปแบบFormatภาษาอังกฤษ 
+เข้าใจว่าแสดงแบบ AM/PM ที่ใช้กันในภาษาอังกฤษ และ ใช้รูปแบบ 24h
+ผมเข้าใจว่าอยากให้ผลลัพธ์ออกมาในรูป Format ประเทศอะไร
+2. {} ด้านใน obj เป็นตัวกำหนดว่าอยากให้แสดง ชั่วโมง วินาที หรือ วัน เดือนปีไหม
+  2.1 ใน timeZone ก็จะอิงจาก เวลาเครื่องเราคือ resolvedOptions  timeZone แปลงให้เป็นstring
+  2.2 .format(declaredAt) คือจะต้องแปลง string จากอะไร (Input)
