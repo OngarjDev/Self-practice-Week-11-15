@@ -1,0 +1,8 @@
+ใน
+Week 11 เข้าใจ async await ทำให้รู้ว่ายังมี Promise ที่มี 3 stateคือ fullfill then catch
+Week 12 เข้าใจ Dom เทคนิคพิเศษที่ได้จาก Integated Project Sprit แรกๆ
+Week 13 นำโค้ดจาก Project มาอธิบายอาจารย์ เช่น keycloak สูตรลัด Vite 
+Week 14 อธิบาย fetch กับ dateTime (ที่ใช้ build-in intl) ผลที่ได้คือได้เข้าใจว่า fetch ส่งอะไรได้บ้าง
+ส่ง header อย่างไร , dateTime อธิบายโค้ดที่ทำ PBI 3
+Week 15 ผมสงสัยเพิ่มเติมต่อจาก week14 ว่า Time ใช้ยังไงกันแน่ Format ทำอะไรได้บ้าง รวมถึง ถ้าเรา
+อยากคำนวณเวลาที่ต่างกัน 2 จุดทำยังไง?

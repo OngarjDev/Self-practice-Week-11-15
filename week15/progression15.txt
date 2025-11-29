@@ -1,0 +1,18 @@
+ได้เรียนรู้ Intl ใน Method DateTimeFormat()
+ด้านในรับ parameter 2 ตัว 
+1. locale เพื่อแปลงเป็น Format ท้องถิ่นของแต่ละโซนนั้นๆ
+2. object ซึ่งใน Week 15 นี้ ผมเรียนรู้ตรงนี้ 
+(ใน Week ที่แล้วจะเป็นการเข้าใจ Flow ของ Intl)
+
+เท่าที่ผมเข้าใจคือ มันจะมี property หลัก
+date ผมลอง มันมี 2 อันคือ numeric(แบบเลขเต็ม) กับ 2-digit (โชว์แบบย่อ 2 ตัว)
+month อันนี้ผมจำไม่ผิดมี long อันนี้เดือนเต็มๆเลย  ผมlog ดู คิดว่าอันนี้เหมือนกัน short narrow เช่น ธ.ค. ม.ค. Jan May  อันนี้เหมือนกับ Date numeric 2-digit
+
+
+ผมว่า ก็รับเหมือนที่ผมอธิบายก่อนหน้า
+year,
+hour,
+minute,
+second
+ถ้าจำอะไรไม่ได้ผมคิดว่าต้องลองไล่ Full long narrow numeric short 2-digit
+
